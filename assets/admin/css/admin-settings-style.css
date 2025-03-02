@@ -1,0 +1,89 @@
+/* Ensure the label is bold and clear */
+.wrap h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.wrap .form-table th {
+    width: 20%;
+    text-align: left;
+    vertical-align: top;
+}
+
+.wrap .form-table td {
+    padding: 10px;
+}
+
+.wrap label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.wrap input[type="text"] {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.wrap input[type="text"]:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 2px rgba(0, 115, 170, 0.5);
+}
+
+.sew-manager-tab {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #0073aa;
+    border: 1px solid transparent;
+    margin-bottom: 5px;
+}
+
+.sew-manager-tab.active {
+    background: #f1f1f1;
+    border-color: #ddd;
+}
+
+.sew-manager-tab:hover {
+    background: #f9f9f9;
+}
+
+.tooltip-icon {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #0073aa;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.tooltip-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    top: 50%;
+    left: 125%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 100;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.tooltip-icon:hover {
+    opacity: 0.8;
+}
