@@ -1,6 +1,6 @@
 # Slug Editor for WordPress
 
-**Contributors:** #
+**Contributor:** Prit Bhuva
 **Tags:** slug, custom post type, taxonomy, permalink, SEO
 
 Easily customize or remove slugs for post types and taxonomies directly from the WordPress admin interface.
