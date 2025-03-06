@@ -76,7 +76,16 @@ if (! class_exists('Slug_Editore_for_Wordpress')) {
  * @since 1.0.0
  */
 register_activation_hook(__FILE__, 'flush_rewrite_rules');
-register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
+register_deactivation_hook(__FILE__, 'sew_plugin_deactivate');
+
+/**
+ * Function to run on plugin deactivation.
+ * Cleans up options and flushes rewrite rules.
+ */
+function sew_plugin_deactivate() {
+    delete_option('sew_manager_settings'); // Remove plugin options
+    flush_rewrite_rules(); // Flush rewrite rules
+}
 
 /**
  * Flush rewrite rules when the plugin settings are updated.
