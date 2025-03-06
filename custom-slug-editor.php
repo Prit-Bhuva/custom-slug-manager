@@ -14,7 +14,7 @@
  * Requires PHP: 7.4
  * Stable tag: 1.0.0
  * 
- * @package Slug_Editore_for_Wordpress
+ * @package Custom_Slug_Editor
  */
 
 if (! defined('ABSPATH')) {
@@ -31,9 +31,9 @@ require_once SEW_PATH . 'includes/class-admin.php';
 require_once SEW_PATH . 'includes/class-rewrite.php';
 
 // Initialize the plugin
-if (! class_exists('Slug_Editore_for_Wordpress')) {
+if (! class_exists('Custom_Slug_Editor')) {
 
-    class Slug_Editore_for_Wordpress
+    class Custom_Slug_Editor
     {
         private $admin;
         private $rewrite;
