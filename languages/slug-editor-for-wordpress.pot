@@ -1,0 +1,90 @@
+# Copyright (C) 2025 Prit Bhuva
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Slug Editor for WordPress 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-slug-editor\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-06T07:04:18+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: custom-slug-editor\n"
+
+#. Plugin Name of the plugin
+#: C:\Users\pritb\Local Sites\wordpess\app\public\wp-content\plugins\custom-slug-editor\custom-slug-editor.php
+msgid "Slug Editor for WordPress"
+msgstr ""
+
+#. Description of the plugin
+#: C:\Users\pritb\Local Sites\wordpess\app\public\wp-content\plugins\custom-slug-editor\custom-slug-editor.php
+msgid "Easily customize or remove slugs for post types and taxonomies directly from the WordPress admin."
+msgstr ""
+
+#. Author of the plugin
+#: C:\Users\pritb\Local Sites\wordpess\app\public\wp-content\plugins\custom-slug-editor\custom-slug-editor.php
+msgid "Prit Bhuva"
+msgstr ""
+
+#. Author URI of the plugin
+#: C:\Users\pritb\Local Sites\wordpess\app\public\wp-content\plugins\custom-slug-editor\custom-slug-editor.php
+msgid "https://prit-bhuva.github.io/prit-bhuva/"
+msgstr ""
+
+#: includes/class-admin.php:42
+msgid "Custom Slug Manager"
+msgstr ""
+
+#: includes/class-admin.php:46
+msgid "If your custom slug isn't working, go to %s and click Save Changes to refresh the permalinks."
+msgstr ""
+
+#: includes/class-admin.php:54
+msgid "To change the slug for a post type or taxonomy, enter the desired slug without the leading slash. For example, if you want the slug to be \"blog\", just enter \"blog\" (not \"/blog\")."
+msgstr ""
+
+#: includes/class-admin.php:61
+msgid "Leave the field blank to keep the default slug or enter \"/\" to remove the slug completely."
+msgstr ""
+
+#: includes/class-admin.php:70
+msgid "Post Types"
+msgstr ""
+
+#: includes/class-admin.php:75
+msgid "Categories"
+msgstr ""
+
+#: includes/class-admin.php:90
+msgid "Manage Post Type Slugs"
+msgstr ""
+
+#: includes/class-admin.php:93
+#: includes/class-admin.php:105
+msgid "If your custom slug isn't working, go to Settings > Permalinks and click Save Changes to refresh the permalinks."
+msgstr ""
+
+#: includes/class-admin.php:102
+msgid "Manage Taxonomy Slugs"
+msgstr ""
+
+#: includes/class-admin.php:142
+msgid "Post :"
+msgstr ""
+
+#. Translators: %s represents the label of the post type.
+#: includes/class-admin.php:166
+msgid " %s : "
+msgstr ""
+
+#. Translators: %s represents the label of the taxonomy.
+#: includes/class-admin.php:187
+msgid "%s : "
+msgstr ""
+
+#: includes/class-admin.php:255
+msgid "Enter new slug or \"/\" to remove"
+msgstr ""

@@ -1,0 +1,30 @@
+{
+    "default": [
+        "scheduled-action",
+        "patterns_ai_data"
+    ],
+    "woocommerce": [
+        "product_shipping_class",
+        "product_variation",
+        "shop_order",
+        "shop_order_refund",
+        "shop_coupon",
+        "shop_webhook",
+        "shop_subscription",
+        "shop_order_placehold",
+        "shop_subscription_plan"
+    ],
+    "acf": [
+        "acf-field-group",
+        "acf-field",
+        "acf-taxonomy",
+        "acf-post-type",
+        "acf-options-page",
+        "acf-ui-options-page"
+    ],
+    "elementor": [
+        "e-floating-buttons",
+        "elementor_library",
+        "elementor_templates"
+    ]
+}

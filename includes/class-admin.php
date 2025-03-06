@@ -24,11 +24,11 @@ if (! class_exists('SEW_Admin')) {
         public function add_settings_menu()
         {
             add_options_page(
-                'Custom Slug Manager', // Page title
-                'Custom Slug Manager', // Menu title
-                'manage_options',   // Capability
-                'slug-editor-for-wordpress', // Menu slug
-                array($this, 'settings_page') // Callback function
+                esc_html__('Custom Slug Manager', 'custom-slug-editor'),
+                esc_html__('Custom Slug Manager', 'custom-slug-editor'),
+                'manage_options',
+                'custom-slug-editor',
+                array($this, 'settings_page')
             );
         }
 
@@ -39,24 +39,25 @@ if (! class_exists('SEW_Admin')) {
         {
 ?>
             <div class="wrap">
-                <h1><?php esc_html_e('Custom Slug Manager', 'slug-editor-for-wordpress'); ?></h1>
-                <!-- <div id="message" class="notice notice-warning">
-                    <p>
-                        <?php
-                        printf(
-                            __("If your custom slug isn't working, go to %s and click Save Changes to refresh the permalinks."),
-                            '<code>Settings > Permalinks</code>'
-                        ); ?>
-                    </p>
-                </div> -->
+                <h1><?php esc_html_e('Custom Slug Manager', 'custom-slug-editor'); ?></h1>
+                <?php
+                // Translators: %s is the code tag.
+                printf(
+                    esc_html__("If your custom slug isn't working, go to %s and click Save Changes to refresh the permalinks.", 'custom-slug-editor'),
+                    '<code>' . esc_html__('Settings > Permalinks', 'custom-slug-editor') . '</code>'
+                );
+                ?>
                 <div id="message" class="notice notice-info">
                     <p>
                         <?php
-                        echo __('To change the slug for a post type or taxonomy, enter the desired slug without the leading slash. For example, if you want the slug to be "blog", just enter "blog" (not "/blog")', '<code>/</code>');
+                        echo esc_html__(
+                            'To change the slug for a post type or taxonomy, enter the desired slug without the leading slash. For example, if you want the slug to be "blog", just enter "blog" (not "/blog").',
+                            'custom-slug-editor'
+                        );
                         ?>
                     </p>
                     <p>
-                        <?php esc_html_e('Leave the field blank to keep the default slug or enter "/" to remove the slug completely.', 'slug-editor-for-wordpress'); ?>
+                        <?php esc_html_e('Leave the field blank to keep the default slug or enter "/" to remove the slug completely.', 'custom-slug-editor'); ?>
                     </p>
                 </div>
                 <div id="sew-manager-container" style="display: flex; gap: 20px;">
@@ -65,12 +66,12 @@ if (! class_exists('SEW_Admin')) {
                         <ul style="list-style: none; padding: 0;">
                             <li>
                                 <a href="#" data-section="post-types" class="sew-manager-tab active">
-                                    <?php esc_html_e('Post Types', 'slug-editor-for-wordpress'); ?>
+                                    <?php esc_html_e('Post Types', 'custom-slug-editor'); ?>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" data-section="categories" class="sew-manager-tab">
-                                    <?php esc_html_e('Categories', 'slug-editor-for-wordpress'); ?>
+                                    <?php esc_html_e('Categories', 'custom-slug-editor'); ?>
                                 </a>
                             </li>
                         </ul>
@@ -85,10 +86,10 @@ if (! class_exists('SEW_Admin')) {
                             <!-- Post Types Section -->
                             <div id="sew-manager-post-types-section" class="sew-manager-section" style="display: block;">
                                 <h2 style="display: flex; align-items: center; gap: 8px;">
-                                    <?php esc_html_e('Manage Post Type Slugs', 'sew-manager'); ?>
+                                    <?php esc_html_e('Manage Post Type Slugs', 'custom-slug-editor'); ?>
                                     <span class="tooltip-icon" title="<?php
                                                                         printf(
-                                                                            __("If your custom slug isn't working, go to Settings > Permalinks and click Save Changes to refresh the permalinks.")
+                                                                            __("If your custom slug isn't working, go to Settings > Permalinks and click Save Changes to refresh the permalinks.", "custom-slug-editor")
                                                                         ); ?>">?</span>
                                 </h2>
                                 <?php do_settings_sections('sew-manager-post-types'); ?>
@@ -97,10 +98,10 @@ if (! class_exists('SEW_Admin')) {
                             <!-- Categories Section -->
                             <div id="sew-manager-categories-section" class="sew-manager-section" style="display: none;">
                                 <h2 style="display: flex; align-items: center; gap: 8px;">
-                                    <?php esc_html_e('Manage Taxonomy Slugs', 'sew-manager'); ?>
+                                    <?php esc_html_e('Manage Taxonomy Slugs', 'custom-slug-editor'); ?>
                                     <span class="tooltip-icon" title="<?php
                                                                         printf(
-                                                                            __("If your custom slug isn't working, go to Settings > Permalinks and click Save Changes to refresh the permalinks.")
+                                                                            __("If your custom slug isn't working, go to Settings > Permalinks and click Save Changes to refresh the permalinks.", "custom-slug-editor")
                                                                         ); ?>">?</span>
                                 </h2>
                                 <?php do_settings_sections('sew-manager-categories'); ?>
@@ -123,28 +124,26 @@ if (! class_exists('SEW_Admin')) {
         {
             register_setting(
                 'sew_manager_settings_group',
-                'sew_manager_settings'
+                'sew_manager_settings',
+                array($this, 'sanitize_settings')
             );
 
             // Post Types Section
             add_settings_section(
                 'sew_manager_post_types_section',
-                __('', 'slug-editor-for-wordpress'),
+                '',
                 null,
                 'sew-manager-post-types'
             );
 
-            // Add only the default 'post' type
+            // Add default post type
             add_settings_field(
                 'cpt_slug_post',
-                __('Post :', 'slug-editor-for-wordpress'),
+                esc_html__('Post:', 'custom-slug-editor'),
                 array($this, 'slug_field_callback'),
                 'sew-manager-post-types',
                 'sew_manager_post_types_section',
-                array(
-                    'label_for' => 'cpt_slug_post',
-                    'post_type' => 'post',
-                )
+                array('label_for' => 'cpt_slug_post', 'post_type' => 'post')
             );
 
             // Get all custom public post types (excluding built-in types like 'page', 'attachment', etc.)
@@ -160,7 +159,8 @@ if (! class_exists('SEW_Admin')) {
 
                 add_settings_field(
                     'cpt_slug_' . $post_type->name,
-                    sprintf(__('%s : ', 'sew-manager'), $post_type->label),
+                    // Translators: %s represents the label of the post type.
+                    sprintf(__(' %s : ', 'custom-slug-editor'), $post_type->label),
                     [$this, 'slug_field_callback'],
                     'sew-manager-post-types',
                     'sew_manager_post_types_section',
@@ -171,7 +171,7 @@ if (! class_exists('SEW_Admin')) {
             // Categories Section
             add_settings_section(
                 'sew_manager_categories_section',
-                __('', 'sew-manager'),
+                '',
                 null,
                 'sew-manager-categories'
             );
@@ -180,7 +180,8 @@ if (! class_exists('SEW_Admin')) {
             foreach ($taxonomies as $taxonomy) {
                 add_settings_field(
                     'taxonomy_slug_' . $taxonomy->name,
-                    sprintf(__('%s : ', 'sew-manager'), $taxonomy->label),
+                    // Translators: %s represents the label of the taxonomy.
+                    sprintf(__('%s : ', 'custom-slug-editor'), $taxonomy->label),
                     [$this, 'slug_field_callback'],
                     'sew-manager-categories',
                     'sew_manager_categories_section',
@@ -190,53 +191,61 @@ if (! class_exists('SEW_Admin')) {
         }
 
         /**
+         * Sanitize the settings before saving them.
+         *
+         * @param array $input The input settings array.
+         * @return array The sanitized settings array.
+         */
+        public function sanitize_settings($input)
+        {
+            $sanitized = [];
+
+            if (is_array($input)) {
+                foreach ($input as $key => $value) {
+                    $sanitized[$key] = sanitize_title($value); // Ensure valid slug format
+                }
+            }
+
+            return $sanitized;
+        }
+
+        /**
          * Returns an array of post types that should be excluded from the settings page.
          * @return array
          */
         private function get_excluded_post_types()
         {
-            $excluded = array();
+            $excluded = [];
 
-            // Add hardcoded exclusions
-            $excluded = array_merge($excluded, array(
-                'scheduled-action',
-                'patterns_ai_data'
-            ));
+            // Path to JSON file
+            $json_file = SEW_PATH . 'includes/excluded-post-types.json';
 
-            // Check if WooCommerce is active
-            if (class_exists('WooCommerce')) {
-                $excluded = array_merge($excluded, array(
-                    'product',
-                    'product_variation',
-                    'shop_order',
-                    'shop_order_refund',
-                    'shop_coupon',
-                    'shop_webhook',
-                    'shop_subscription',
-                    'shop_order_placehold',
-                    'shop_subscription_plan'
-                ));
-            }
+            // Check if the file exists and read it
+            if (file_exists($json_file)) {
+                $json_data = file_get_contents($json_file);
+                $exclusions = json_decode($json_data, true);
 
-            // Check if ACF is active
-            if (class_exists('ACF')) {
-                $excluded = array_merge($excluded, array(
-                    'acf-field-group',
-                    'acf-field',
-                    'acf-taxonomy',
-                    'acf-post-type',
-                    'acf-options-page',
-                    'acf-ui-options-page'
-                ));
-            }
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    // Merge default exclusions
+                    if (!empty($exclusions['default'])) {
+                        $excluded = array_merge($excluded, $exclusions['default']);
+                    }
 
-            // Check if Elementor is active
-            if (defined('ELEMENTOR_VERSION')) {
-                $excluded = array_merge($excluded, array(
-                    'e-floating-buttons',
-                    'elementor_library',
-                    'elementor_templates'
-                ));
+                    // Check if WooCommerce is active
+                    if (class_exists('WooCommerce') && !empty($exclusions['woocommerce'])) {
+                        $excluded = array_merge($excluded, $exclusions['woocommerce']);
+                    }
+
+                    // Check if ACF is active
+                    if (class_exists('ACF') && !empty($exclusions['acf'])) {
+                        $excluded = array_merge($excluded, $exclusions['acf']);
+                    }
+
+                    // Check if Elementor is active
+                    if (defined('ELEMENTOR_VERSION') && !empty($exclusions['elementor'])) {
+                        $excluded = array_merge($excluded, $exclusions['elementor']);
+                    }
+                }
             }
 
             return $excluded;
@@ -259,7 +268,7 @@ if (! class_exists('SEW_Admin')) {
             <label for="<?php echo esc_attr($args['label_for']); ?>">
                 /<?php echo esc_html($args['post_type']); ?> to
             </label>
-            <input type="text" id="<?php echo esc_attr($args['label_for']); ?>" name="sew_manager_settings[<?php echo esc_attr($args['post_type']); ?>]" value="<?php echo $slug; ?>" placeholder="<?php esc_attr_e('Enter new slug or "/" to remove', 'slug-editor-for-wordpress'); ?>">
+            <input type="text" id="<?php echo esc_attr($args['label_for']); ?>" name="sew_manager_settings[<?php echo esc_attr($args['post_type']); ?>]" value="<?php echo $slug; ?>" placeholder="<?php esc_attr_e('Enter new slug or "/" to remove', 'custom-slug-editor'); ?>">
 <?php
         }
     }

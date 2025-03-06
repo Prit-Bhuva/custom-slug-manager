@@ -1,4 +1,4 @@
-# Slug Editor for WordPress
+# Custom Slug Editor
 
 **Contributor:** Prit Bhuva
 **Tags:** slug, custom post type, taxonomy, permalink, SEO
@@ -7,7 +7,7 @@ Easily customize or remove slugs for post types and taxonomies directly from the
 
 ## Description
 
-**Slug Editor for WordPress** allows administrators to customize or remove slugs for post types and taxonomies. Simplify your URL structure and optimize your site's permalinks for better SEO and user experience.
+**Custom Slug Editor** allows administrators to customize or remove slugs for post types and taxonomies. Simplify your URL structure and optimize your site's permalinks for better SEO and user experience.
 
 ## Key Features:
 
@@ -38,4 +38,4 @@ Easily customize or remove slugs for post types and taxonomies directly from the
 
 ## License
 
-This plugin is licensed under the **GPL v3**. For more information, visit [GPL License](http://www.gnu.org/licenses/gpl-3.0.html).
+This plugin is licensed under the **GPLv2 or later**. For more information, visit [GPL License](https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses).

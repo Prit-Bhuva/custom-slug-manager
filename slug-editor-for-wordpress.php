@@ -1,13 +1,12 @@
 <?php
 
 /**
- * Plugin Name: Slug Editor for WordPress
- * Plugin URI: #
+ * Plugin Name: Custom Slug Editor
  * Description: Easily customize or remove slugs for post types and taxonomies directly from the WordPress admin.
  * Version: 1.0.0
- * Author: #
- * Author URI: #
- * Text Domain: slug-editor-for-wordpress
+ * Author: Prit Bhuva
+ * Author URI: https://prit-bhuva.github.io/prit-bhuva/
+ * Text Domain: custom-slug-editor
  * Domain Path: /languages
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
@@ -105,7 +104,7 @@ add_action('update_option_sew_slug_manager_settings', function ($old_value, $new
  * @since 1.0.0
  */
 add_action('admin_init', function () {
-    if (isset($_GET['page']) && $_GET['page'] === 'slug-editor-for-wordpress') {
+    if (isset($_GET['page']) && $_GET['page'] === 'custom-slug-editor') {
         // Ensure that rewrite rules are updated
         global $wp_rewrite;
         $wp_rewrite->flush_rules();
