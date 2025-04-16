@@ -66,7 +66,7 @@ if (! class_exists('Custom_Slug_Editor')) {
     }
 
     // Instantiate the main plugin class
-    $sew_manager = new Slug_Editore_for_Wordpress();
+    $sew_manager = new Custom_Slug_Editor();
 }
 
 /**
